@@ -1,0 +1,192 @@
+{
+  "$defs": {
+    "CatalogOperation": {
+      "properties": {
+        "id": {
+          "maxLength": 2048,
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 2048,
+          "title": "Title",
+          "type": "string"
+        },
+        "section": {
+          "maxLength": 2048,
+          "title": "Section",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 2048,
+          "title": "Description",
+          "type": "string"
+        },
+        "parameters": {
+          "items": {
+            "$ref": "#/$defs/CatalogParameter"
+          },
+          "title": "Parameters",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "section"
+      ],
+      "title": "CatalogOperation",
+      "type": "object"
+    },
+    "CatalogParameter": {
+      "properties": {
+        "name": {
+          "maxLength": 2048,
+          "title": "Name",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 2048,
+          "title": "Label",
+          "type": "string"
+        },
+        "help": {
+          "default": "",
+          "maxLength": 2048,
+          "title": "Help",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "text",
+            "integer",
+            "number",
+            "boolean",
+            "choice",
+            "file",
+            "selection"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "default": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Default"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "multiple": {
+          "default": false,
+          "title": "Multiple",
+          "type": "boolean"
+        },
+        "choices": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "title": "Choices",
+          "type": "array"
+        },
+        "secret": {
+          "default": false,
+          "title": "Secret",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "label",
+        "kind"
+      ],
+      "title": "CatalogParameter",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "release-catalog/1",
+      "default": "release-catalog/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "language": {
+      "default": "en",
+      "enum": [
+        "en",
+        "ru"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/CatalogOperation"
+      },
+      "title": "Operations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "operations"
+  ],
+  "title": "CatalogResponse",
+  "type": "object"
+}

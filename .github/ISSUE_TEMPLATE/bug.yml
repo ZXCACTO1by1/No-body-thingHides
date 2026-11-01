@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible application problem.
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach tokens, cookies, raw evidence, personal datasets or an entire case folder. Use synthetic examples and review diagnostic attachments.
+  - type: input
+    id: version
+    attributes:
+      label: Application and Windows version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the selected workflow and a small synthetic example.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Reviewed diagnostic details
+      description: Redact identifying data and credentials before attaching anything.

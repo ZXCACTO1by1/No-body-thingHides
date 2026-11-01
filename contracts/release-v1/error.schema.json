@@ -1,0 +1,40 @@
+{
+  "properties": {
+    "code": {
+      "enum": [
+        "INVALID_REQUEST",
+        "RESULT_NOT_FOUND",
+        "PROJECTION_UNAVAILABLE",
+        "INCOMPATIBLE_SCHEMA",
+        "SESSION_REQUIRED",
+        "RELEASE_UNAVAILABLE",
+        "INTERNAL_ERROR"
+      ],
+      "title": "Code",
+      "type": "string"
+    },
+    "parameters": {
+      "additionalProperties": {
+        "const": "release-result/1",
+        "type": "string"
+      },
+      "propertyNames": {
+        "const": "supported_schema"
+      },
+      "title": "Parameters",
+      "type": "object"
+    },
+    "request_id": {
+      "maxLength": 32,
+      "pattern": "^[a-f0-9]{32}$",
+      "title": "Request Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "code",
+    "request_id"
+  ],
+  "title": "SafeError",
+  "type": "object"
+}

@@ -1,0 +1,50 @@
+No[body]thingHides Freeware and Limited Source License, version 1.0
+
+Copyright (c) 2026 the No[body]thingHides copyright holder.
+All rights reserved except as expressly granted below.
+
+1. Scope
+These terms apply only to original No[body]thingHides application material,
+including the compiled core, original client code, documentation and artwork.
+They do not apply to third-party software, datasets or other material identified
+in NOTICE.md, THIRD_PARTY_NOTICES.md or the component license inventory. Those
+components remain under their respective licenses.
+
+2. Free use
+You may download, install, run and make backup copies of the official application
+without a fee, for personal, educational and commercial use. You may inspect the
+published original client source and documentation, and modify that client for
+your own use. No subscription or license activation is required.
+
+3. Distribution and separate products
+You may share links to official downloads. Redistribution of original application
+binaries, modified original client code, or substantial original material in a
+separate product requires written permission from the copyright holder. You may
+quote short documentation excerpts with attribution. You may not remove notices,
+claim authorship of original material, or present a modified product as an
+official No[body]thingHides release. No trademark rights are granted.
+
+4. Inspection and third-party rights
+Inspection, debugging and reverse engineering for study, interoperability and
+replacement of compatible components are permitted. These terms do not restrict
+rights granted by third-party licenses, including LGPL component modification,
+replacement and reverse engineering for debugging such modifications, or rights
+that applicable law does not permit a license to exclude. Original application
+source that has not been published is not licensed for redistribution here.
+
+5. Contributions
+Submitting a contribution does not transfer your copyright. Accepted original
+contributions are governed by CONTRIBUTION_TERMS.md. Material under an existing
+third-party license retains that license and attribution.
+
+6. No warranty
+THE ORIGINAL MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, TO THE EXTENT PERMITTED BY
+LAW. THE COPYRIGHT HOLDERS ARE NOT LIABLE FOR CLAIMS OR DAMAGES ARISING FROM ITS
+USE, EXCEPT WHERE APPLICABLE LAW REQUIRES OTHERWISE. Search results do not warrant
+account ownership, completeness, accuracy or continued source availability.
+
+7. Termination
+The permissions for original material terminate upon a material violation of
+these terms. Termination does not revoke independently granted third-party rights.
+Contact the maintainer through the official repository for additional permissions.

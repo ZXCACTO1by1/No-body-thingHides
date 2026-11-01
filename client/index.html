@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>No[body]thingHides</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23245c48'/%3E%3Cpath d='M12 8H8v16h4m8-16h4v16h-4' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+  <style nonce="__TOKEN__">__STYLE__</style>
+</head>
+<body>
+  <a class="skip" href="#content" data-i18n="ui.skip">Skip to content</a>
+  <div class="shell">
+    <aside>
+      <a class="brand" href="/easy">No<span>[body]</span><br>thingHides</a>
+      <p class="edition" data-i18n="ui.edition">USERNAME DISCOVERY · 1.0</p>
+      <nav aria-label="Navigation">
+        <button type="button" data-screen="search" aria-current="page" data-i18n="nav.search">Search</button>
+        <button type="button" data-screen="results" data-i18n="nav.results">Results</button>
+        <button type="button" data-screen="tools" data-i18n="nav.tools">Tools</button>
+        <button type="button" data-screen="settings" data-i18n="nav.settings">Settings</button>
+      </nav>
+      <div class="local-note"><span class="dot"></span><span data-i18n="ui.local">Runs on your computer</span><p data-i18n="ui.local_detail">Your history and saved results stay here.</p></div>
+    </aside>
+    <main id="content" tabindex="-1">
+      <header><span class="eyebrow" data-i18n="ui.workspace">YOUR WORKSPACE</span><label class="language"><span data-i18n="settings.language">Interface language</span><select id="language"><option value="en">English</option><option value="ru">Русский</option></select></label></header>
+      <div id="notice" role="status" aria-live="polite" hidden></div>
+      <section id="screen-search">
+        <div class="intro"><p class="eyebrow" data-i18n="ui.search_eyebrow">START WITH A USERNAME</p><h1 data-i18n="ui.search_title">Follow a username.</h1><p data-i18n="ui.search_intro">Find public accounts, similar spellings and profile links in one search.</p></div>
+        <form id="main-search" class="panel">
+          <label for="nickname" data-i18n="search.username">Username</label>
+          <div class="search-line"><input id="nickname" name="username" autocomplete="off" maxlength="256" required placeholder="example_handle"><button class="primary" data-i18n="action.search">Start search</button></div>
+          <p class="hint" data-i18n="ui.username_hint">Enter an account name without @ or a profile URL.</p>
+          <fieldset class="modes"><legend data-i18n="ui.scope">Choose your search scope</legend>
+            <label><input type="radio" name="mode" value="quick" checked><span><b data-i18n="search.quick">Quick</b><small data-i18n="ui.quick_hint">Popular services. A good place to start.</small></span></label>
+            <label><input type="radio" name="mode" value="deep"><span><b data-i18n="search.deep">Deep</b><small data-i18n="ui.deep_hint">The full eligible catalogue. More checks and time.</small></span></label>
+          </fieldset>
+          <details><summary data-i18n="ui.search_settings">Search limits and speed</summary><p class="hint" data-i18n="ui.limits_hint">Both modes use the same applicable search stages. Empty time and request limits leave the run uncapped.</p><div id="search-options" class="fields"></div></details>
+        </form>
+        <div class="benefits"><article><h2 data-i18n="ui.service_title">Organized by service</h2><p data-i18n="ui.service_hint">See each account in its service section, with its supporting receipts.</p></article><article><h2 data-i18n="ui.resume_title">Pick up where you left off</h2><p data-i18n="ui.resume_hint">Stop and save a search, then continue it from your history.</p></article></div>
+        <section id="activity" class="panel" hidden><h2 data-i18n="ui.activity">Recent activity</h2><div id="job-list"></div></section>
+      </section>
+      <section id="screen-results" hidden>
+        <div class="intro"><p class="eyebrow" data-i18n="ui.results_eyebrow">SAVED WORK</p><h1 data-i18n="nav.results">Results</h1><p data-i18n="ui.results_intro">Open a saved result or continue an interrupted search.</p></div>
+        <div id="result-list" class="cards"></div><section id="result-view" class="panel" hidden tabindex="-1"></section>
+      </section>
+      <section id="screen-tools" hidden>
+        <div class="intro"><p class="eyebrow" data-i18n="ui.tools_eyebrow">GO FURTHER</p><h1 data-i18n="nav.tools">Tools</h1><p data-i18n="ui.tools_intro">Extract page data, explore saved connections and use the supported engines with your own settings.</p></div>
+        <label for="tool-filter" data-i18n="ui.find_tool">Find a tool</label><input type="search" id="tool-filter"><div id="tool-list" class="cards"></div>
+      </section>
+      <section id="screen-settings" hidden>
+        <div class="intro"><p class="eyebrow" data-i18n="ui.settings_eyebrow">MAKE IT YOURS</p><h1 data-i18n="nav.settings">Settings</h1></div>
+        <form id="preferences" class="panel"><h2 data-i18n="ui.next_search">Next search</h2><div id="preference-fields" class="fields"></div><button class="primary" data-i18n="ui.save_preferences">Save preferences</button></form>
+        <article class="panel"><h2>No[body]thingHides 1.0</h2><p data-i18n="about.first_release"></p><p class="hint" data-i18n="ui.licenses">Free to use. See the bundled license and third-party notices for the terms.</p></article>
+      </section>
+      <footer data-i18n="result.attribution">Account presence does not establish who owns it.</footer>
+    </main>
+  </div>
+  <dialog id="operation-dialog"><div class="dialog-heading"><h2 id="operation-title"></h2><button type="button" id="close-dialog" aria-label="Close">×</button></div><p id="operation-help"></p><form id="operation-form"><div id="operation-fields" class="fields"></div><div id="special-fields"></div><p id="form-error" class="error" role="alert" hidden></p><button class="primary" data-i18n="ui.run_tool">Run tool</button></form></dialog>
+  <dialog id="output-dialog" aria-labelledby="output-title"><div class="dialog-heading"><h2 id="output-title" data-i18n="ui.output">Tool output</h2><button type="button" id="close-output" data-i18n="action.close">Close</button></div><p class="hint" data-i18n="ui.output_hint"></p><pre id="output-text"></pre><p id="output-truncated" class="hint" data-i18n="ui.output_truncated" hidden></p><button id="download-output" data-i18n="ui.download_output">Download text output</button></dialog>
+  <script nonce="__TOKEN__">const TOKEN="__TOKEN__"; __SCRIPT__</script>
+</body>
+</html>

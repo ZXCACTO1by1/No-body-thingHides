@@ -1,0 +1,190 @@
+{
+  "schema": "public-export-manifest/1",
+  "entries": [
+    {
+      "output": ".github/ISSUE_TEMPLATE/bug.yml",
+      "category": "docs",
+      "sha256": "c204d9c070a484902e557d26618c8ef2231fa1052107f8d9c4ec7e61cc2d0ba9"
+    },
+    {
+      "output": ".github/ISSUE_TEMPLATE/feature.yml",
+      "category": "docs",
+      "sha256": "69a56ead0e197d66c81990613dfcc6374787362d3a1c8cb1f62d184400096118"
+    },
+    {
+      "output": ".github/PULL_REQUEST_TEMPLATE.md",
+      "category": "docs",
+      "sha256": "0cddacfd990d2dd259a0ae297cda2c71a05e6e90ce7d7d178bac916aab581f09"
+    },
+    {
+      "output": ".github/workflows/client.yml",
+      "category": "build-client",
+      "sha256": "8003cb3da2e48516bf68b2c8a3c39949e5afe97f7bdae595eb93894049da539f"
+    },
+    {
+      "output": ".gitignore",
+      "category": "docs",
+      "sha256": "853ec1c9fecc6e757f0746db092fad80977c232605925cd82bf34783d1da97a7"
+    },
+    {
+      "output": "CHANGELOG.md",
+      "category": "docs",
+      "sha256": "c3a0d6b82bc8cd280b0b1d8c71dc510331fec0b75c2d4f2c6e7d77ad99137a28"
+    },
+    {
+      "output": "CONTRIBUTING.md",
+      "category": "docs",
+      "sha256": "86ac6a248125a9f22ea50e640bca5f2e301bb75496d1a465fff00850163af76a"
+    },
+    {
+      "output": "docs/api.md",
+      "category": "docs",
+      "sha256": "e3e640be01e863b07476d46b23132d6f3c3d87ce82f3c68d1328f46b88aa6c29"
+    },
+    {
+      "output": "docs/architecture.md",
+      "category": "docs",
+      "sha256": "8aa23ba7a99b5328688ae31593cee1bcc5ec3139151ce8a7ef9037c73c735b12"
+    },
+    {
+      "output": "docs/build-client.md",
+      "category": "docs",
+      "sha256": "25b7e51c1a49485d38a10e54e0e6a41627750404000bb4566815487a8a02c7a4"
+    },
+    {
+      "output": "docs/cli.md",
+      "category": "docs",
+      "sha256": "070dc4dc5ffced6a39d243ca81cd98dbfcd69f5721a361daf31951921e0dd318"
+    },
+    {
+      "output": "docs/faq.md",
+      "category": "docs",
+      "sha256": "f37276dfab414eacae70d1b88d69f2b5eb075d5ed8db5fdf5b032648b927ed9d"
+    },
+    {
+      "output": "docs/images/results.en.png",
+      "category": "docs",
+      "sha256": "1e1cd2a142ad3afb82e90083e67f705f96a5d9b78750ea6fbe5778815774d40a"
+    },
+    {
+      "output": "docs/images/results.ru.png",
+      "category": "docs",
+      "sha256": "07b0364e02cf3bd7e1fc620a8c3878ed7687998af817346fa24e10e57aa36b98"
+    },
+    {
+      "output": "docs/privacy.md",
+      "category": "docs",
+      "sha256": "c8ca767cecaff5debc9014381882fea64393a55e6d36856e97ce1a82730662e8"
+    },
+    {
+      "output": "docs/quick-start.md",
+      "category": "docs",
+      "sha256": "6b49139f62620e8630589f87f4afc3f33e9a0180faa2d5efeb4fbab91dbcafea"
+    },
+    {
+      "output": "docs/results.md",
+      "category": "docs",
+      "sha256": "f30e432bc5edf475c6a65f436d83c7b5a0a62203d348580a4ca683c379b2a422"
+    },
+    {
+      "output": "docs/ru/privacy.md",
+      "category": "docs",
+      "sha256": "0550bf027d9c8cb78467f9a5706cf11bea62084a1d7581934160cd289c532a87"
+    },
+    {
+      "output": "docs/ru/quick-start.md",
+      "category": "docs",
+      "sha256": "7a62971f53bcffafb59558582546a74eadc0183d97a774cae7bef3b3b4656698"
+    },
+    {
+      "output": "docs/ru/results.md",
+      "category": "docs",
+      "sha256": "e8139e5e88dc62a4cb9c6f008889631d2179b263e0d21636ee70dfdfcda1bdf7"
+    },
+    {
+      "output": "README.md",
+      "category": "docs",
+      "sha256": "eae99fae56214faf5e3272dd99aabf54025f1e09c1f41a2e70ea4aad1cb7f37e"
+    },
+    {
+      "output": "scripts/build_client.py",
+      "category": "build-client",
+      "sha256": "912233b55bb4faabb36c558747c523cf4016216b60573b35f34b00db44446ddf"
+    },
+    {
+      "output": "SECURITY.md",
+      "category": "docs",
+      "sha256": "d22a22a38d9cd13240e9ab3764337134e03d7143aa32784f3874272dfde2a6c6"
+    },
+    {
+      "output": "tests/test_client.py",
+      "category": "synthetic-test",
+      "sha256": "c2f82ba5c18c4fcd97082004a47e99e16d4cd0a68cd15e7d5472af7460ad5078"
+    },
+    {
+      "output": "CONTRIBUTION_TERMS.md",
+      "category": "legal",
+      "sha256": "100e096f47cae84d5ef66bd3983ea37587ffd79fbc95aa5ad3c225cbac1024cd"
+    },
+    {
+      "output": "LICENSE",
+      "category": "legal",
+      "sha256": "970c0b5f3f895833b63c97fe1f92f9db76d8c56bb1c9c776cd779f06040512f1"
+    },
+    {
+      "output": "NOTICE.md",
+      "category": "legal",
+      "sha256": "c13a419f0c3c97fa03f43f14ac24e96ed76a437f1966be4a0ea60ff69896d15a"
+    },
+    {
+      "output": "client/index.html",
+      "category": "client",
+      "sha256": "10e6176293e8ed75dd187a1532dd91c931ebe057aa677b7722c0121d5f33188b"
+    },
+    {
+      "output": "client/style.css",
+      "category": "client",
+      "sha256": "813cdbee8d7b84cc22129123c6a0002a1ad90905816b7fde5e69800b2858a6df"
+    },
+    {
+      "output": "client/app.js",
+      "category": "client",
+      "sha256": "c0d4ca9d29ceecd78288cf8b4627bf04c5b69bed47f891a4bc962a58df694e45"
+    },
+    {
+      "output": "client/locales/en.json",
+      "category": "client",
+      "sha256": "100684491ec4e2a79cefed6994c75b31a69f205299fca71e1dba0d59233cded0"
+    },
+    {
+      "output": "client/locales/ru.json",
+      "category": "client",
+      "sha256": "0d2e7e8420ec5a2eb8ca4aabe0244bcfe39328ed15bbeb3495ec77af704d8c69"
+    },
+    {
+      "output": "contracts/release-v1/catalog.schema.json",
+      "category": "contract",
+      "sha256": "4eb0031920c4581d9ea0f7189f3d7b88b3008a7b31defeb758c213acfb5c4f62"
+    },
+    {
+      "output": "contracts/release-v1/error.schema.json",
+      "category": "contract",
+      "sha256": "4a8bb8910d61608ed3092dd6abb4608cfd106362ee743ff9544d3757cfd3d363"
+    },
+    {
+      "output": "contracts/release-v1/job.schema.json",
+      "category": "contract",
+      "sha256": "09aeb5cf6857a55162d0a481794cbcc540ccb684f2d20c2ea12e1d45b8ff8c98"
+    },
+    {
+      "output": "contracts/release-v1/output.schema.json",
+      "category": "contract",
+      "sha256": "57248c8b7d0fe794ee4e2e383df107128aeb6aed2ed4ea80bf65f4e1d70fd192"
+    },
+    {
+      "output": "contracts/release-v1/result.schema.json",
+      "category": "contract",
+      "sha256": "33c934e49f4af2d44052843ba34183a3f7ded5eb6cb2f95edbfe7d5f90d9a158"
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "$defs": {
+    "JobProgress": {
+      "properties": {
+        "stage": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stage"
+        },
+        "checked": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Checked",
+          "type": "integer"
+        },
+        "planned": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Planned",
+          "type": "integer"
+        },
+        "elapsed_seconds": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Elapsed Seconds",
+          "type": "number"
+        }
+      },
+      "title": "JobProgress",
+      "type": "object"
+    },
+    "SafeError": {
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_REQUEST",
+            "RESULT_NOT_FOUND",
+            "PROJECTION_UNAVAILABLE",
+            "INCOMPATIBLE_SCHEMA",
+            "SESSION_REQUIRED",
+            "RELEASE_UNAVAILABLE",
+            "INTERNAL_ERROR"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "parameters": {
+          "additionalProperties": {
+            "const": "release-result/1",
+            "type": "string"
+          },
+          "propertyNames": {
+            "const": "supported_schema"
+          },
+          "title": "Parameters",
+          "type": "object"
+        },
+        "request_id": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Request Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "request_id"
+      ],
+      "title": "SafeError",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "release-job/1",
+      "default": "release-job/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "id": {
+      "maxLength": 32,
+      "pattern": "^[a-f0-9]{32}$",
+      "title": "Id",
+      "type": "string"
+    },
+    "operation": {
+      "maxLength": 2048,
+      "title": "Operation",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "INTERRUPTED",
+        "COMPLETED",
+        "COMPLETED_WITH_SOURCE_GAPS",
+        "FAILED",
+        "CANCELLED"
+      ],
+      "title": "State",
+      "type": "string"
+    },
+    "created_at": {
+      "maxLength": 2048,
+      "title": "Created At",
+      "type": "string"
+    },
+    "updated_at": {
+      "anyOf": [
+        {
+          "maxLength": 2048,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Updated At"
+    },
+    "report_id": {
+      "anyOf": [
+        {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Report Id"
+    },
+    "progress": {
+      "$ref": "#/$defs/JobProgress"
+    },
+    "resumable": {
+      "default": false,
+      "title": "Resumable",
+      "type": "boolean"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SafeError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "id",
+    "operation",
+    "state",
+    "created_at"
+  ],
+  "title": "JobResponse",
+  "type": "object"
+}

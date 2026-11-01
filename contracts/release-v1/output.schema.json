@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "schema_version": {
+      "const": "release-output/1",
+      "default": "release-output/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "job_id": {
+      "maxLength": 32,
+      "pattern": "^[a-f0-9]{32}$",
+      "title": "Job Id",
+      "type": "string"
+    },
+    "text": {
+      "maxLength": 65536,
+      "title": "Text",
+      "type": "string"
+    },
+    "truncated": {
+      "default": false,
+      "title": "Truncated",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "job_id",
+    "text"
+  ],
+  "title": "OutputResponse",
+  "type": "object"
+}

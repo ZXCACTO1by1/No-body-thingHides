@@ -1,0 +1,966 @@
+{
+  "$defs": {
+    "Coverage": {
+      "properties": {
+        "checked": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Checked",
+          "type": "integer"
+        },
+        "planned": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Planned",
+          "type": "integer"
+        },
+        "pending": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Pending",
+          "type": "integer"
+        },
+        "source_gaps": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Source Gaps",
+          "type": "integer"
+        },
+        "excluded": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Excluded",
+          "type": "integer"
+        }
+      },
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Lead": {
+      "properties": {
+        "service_id": {
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9:._-]{0,159}$",
+          "title": "Service Id",
+          "type": "string"
+        },
+        "handle": {
+          "maxLength": 2048,
+          "title": "Handle",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        },
+        "presence_status": {
+          "enum": [
+            "FOUND",
+            "NOT_FOUND",
+            "UNKNOWN",
+            "BLOCKED",
+            "RATE_LIMITED",
+            "NOT_CHECKED",
+            "ERROR"
+          ],
+          "title": "Presence Status",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "subject_attribution": {
+          "const": "UNPROVEN",
+          "default": "UNPROVEN",
+          "title": "Subject Attribution",
+          "type": "string"
+        }
+      },
+      "required": [
+        "service_id",
+        "handle",
+        "presence_status"
+      ],
+      "title": "Lead",
+      "type": "object"
+    },
+    "ServiceHeader": {
+      "properties": {
+        "service_id": {
+          "maxLength": 160,
+          "pattern": "^[a-z0-9][a-z0-9:._-]{0,159}$",
+          "title": "Service Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 2048,
+          "title": "Name",
+          "type": "string"
+        },
+        "confirmed_count": {
+          "minimum": 0,
+          "title": "Confirmed Count",
+          "type": "integer"
+        },
+        "lead_count": {
+          "minimum": 0,
+          "title": "Lead Count",
+          "type": "integer"
+        },
+        "check_counts": {
+          "additionalProperties": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "FOUND",
+              "NOT_FOUND",
+              "UNKNOWN",
+              "BLOCKED",
+              "RATE_LIMITED",
+              "NOT_CHECKED",
+              "ERROR"
+            ]
+          },
+          "title": "Check Counts",
+          "type": "object"
+        }
+      },
+      "required": [
+        "service_id",
+        "name",
+        "confirmed_count",
+        "lead_count"
+      ],
+      "title": "ServiceHeader",
+      "type": "object"
+    },
+    "ServicePageRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "offset": {
+          "default": 0,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 100,
+          "maximum": 100,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "pattern": "^[a-f0-9]{32}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 43,
+              "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "schema_version": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema Version"
+        }
+      },
+      "title": "ServicePageRequest",
+      "type": "object"
+    },
+    "AccountPageRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "offset": {
+          "default": 0,
+          "maximum": 2147483647,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 50,
+          "maximum": 50,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "maxLength": 32,
+              "pattern": "^[a-f0-9]{32}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Snapshot"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 43,
+              "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "schema_version": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema Version"
+        }
+      },
+      "title": "AccountPageRequest",
+      "type": "object"
+    },
+    "Account": {
+      "properties": {
+        "account_key": {
+          "maxLength": 2048,
+          "title": "Account Key",
+          "type": "string"
+        },
+        "handle": {
+          "maxLength": 2048,
+          "title": "Handle",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 4096,
+          "title": "Url",
+          "type": "string"
+        },
+        "instance_host": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Instance Host"
+        },
+        "account_namespace": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Account Namespace"
+        },
+        "account_type": {
+          "default": "UNVERIFIED_ACCOUNT_TYPE",
+          "maxLength": 2048,
+          "title": "Account Type",
+          "type": "string"
+        },
+        "presence_status": {
+          "const": "FOUND",
+          "title": "Presence Status",
+          "type": "string"
+        },
+        "match_kinds": {
+          "items": {
+            "enum": [
+              "EXACT",
+              "VARIANT",
+              "DECLARED_LINK"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Match Kinds",
+          "type": "array"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "source_rules": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "title": "Source Rules",
+          "type": "array"
+        },
+        "observed_at": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed At"
+        },
+        "subject_attribution": {
+          "const": "UNPROVEN",
+          "default": "UNPROVEN",
+          "title": "Subject Attribution",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_key",
+        "handle",
+        "url",
+        "presence_status",
+        "match_kinds",
+        "evidence_ids"
+      ],
+      "title": "Account",
+      "type": "object"
+    },
+    "AccountPage": {
+      "$defs": {
+        "Account": {
+          "properties": {
+            "account_key": {
+              "maxLength": 2048,
+              "title": "Account Key",
+              "type": "string"
+            },
+            "handle": {
+              "maxLength": 2048,
+              "title": "Handle",
+              "type": "string"
+            },
+            "url": {
+              "maxLength": 4096,
+              "title": "Url",
+              "type": "string"
+            },
+            "instance_host": {
+              "anyOf": [
+                {
+                  "maxLength": 2048,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Instance Host"
+            },
+            "account_namespace": {
+              "anyOf": [
+                {
+                  "maxLength": 2048,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Account Namespace"
+            },
+            "account_type": {
+              "default": "UNVERIFIED_ACCOUNT_TYPE",
+              "maxLength": 2048,
+              "title": "Account Type",
+              "type": "string"
+            },
+            "presence_status": {
+              "const": "FOUND",
+              "title": "Presence Status",
+              "type": "string"
+            },
+            "match_kinds": {
+              "items": {
+                "enum": [
+                  "EXACT",
+                  "VARIANT",
+                  "DECLARED_LINK"
+                ],
+                "type": "string"
+              },
+              "maxItems": 3,
+              "title": "Match Kinds",
+              "type": "array"
+            },
+            "evidence_ids": {
+              "items": {
+                "maxLength": 2048,
+                "type": "string"
+              },
+              "minItems": 1,
+              "title": "Evidence Ids",
+              "type": "array"
+            },
+            "source_rules": {
+              "items": {
+                "maxLength": 2048,
+                "type": "string"
+              },
+              "title": "Source Rules",
+              "type": "array"
+            },
+            "observed_at": {
+              "anyOf": [
+                {
+                  "maxLength": 2048,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Observed At"
+            },
+            "subject_attribution": {
+              "const": "UNPROVEN",
+              "default": "UNPROVEN",
+              "title": "Subject Attribution",
+              "type": "string"
+            }
+          },
+          "required": [
+            "account_key",
+            "handle",
+            "url",
+            "presence_status",
+            "match_kinds",
+            "evidence_ids"
+          ],
+          "title": "Account",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "schema_version": {
+          "default": "release-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "report_id": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "snapshot": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Snapshot",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/Account"
+          },
+          "maxItems": 50,
+          "title": "Items",
+          "type": "array"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        },
+        "offset": {
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 0,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 43,
+              "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "report_id",
+        "snapshot",
+        "items",
+        "total",
+        "offset",
+        "limit",
+        "next_cursor"
+      ],
+      "title": "AccountPageResponse",
+      "type": "object"
+    },
+    "ServicePage": {
+      "$defs": {
+        "ServiceHeader": {
+          "properties": {
+            "service_id": {
+              "maxLength": 160,
+              "pattern": "^[a-z0-9][a-z0-9:._-]{0,159}$",
+              "title": "Service Id",
+              "type": "string"
+            },
+            "name": {
+              "maxLength": 2048,
+              "title": "Name",
+              "type": "string"
+            },
+            "confirmed_count": {
+              "minimum": 0,
+              "title": "Confirmed Count",
+              "type": "integer"
+            },
+            "lead_count": {
+              "minimum": 0,
+              "title": "Lead Count",
+              "type": "integer"
+            },
+            "check_counts": {
+              "additionalProperties": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "propertyNames": {
+                "enum": [
+                  "FOUND",
+                  "NOT_FOUND",
+                  "UNKNOWN",
+                  "BLOCKED",
+                  "RATE_LIMITED",
+                  "NOT_CHECKED",
+                  "ERROR"
+                ]
+              },
+              "title": "Check Counts",
+              "type": "object"
+            }
+          },
+          "required": [
+            "service_id",
+            "name",
+            "confirmed_count",
+            "lead_count"
+          ],
+          "title": "ServiceHeader",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "schema_version": {
+          "default": "release-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "report_id": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "snapshot": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Snapshot",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ServiceHeader"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        },
+        "offset": {
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 0,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 43,
+              "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "report_id",
+        "snapshot",
+        "items",
+        "total",
+        "offset",
+        "limit",
+        "next_cursor"
+      ],
+      "title": "ServicePageResponse",
+      "type": "object"
+    },
+    "LeadPage": {
+      "$defs": {
+        "Lead": {
+          "properties": {
+            "service_id": {
+              "maxLength": 160,
+              "pattern": "^[a-z0-9][a-z0-9:._-]{0,159}$",
+              "title": "Service Id",
+              "type": "string"
+            },
+            "handle": {
+              "maxLength": 2048,
+              "title": "Handle",
+              "type": "string"
+            },
+            "url": {
+              "anyOf": [
+                {
+                  "maxLength": 4096,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Url"
+            },
+            "presence_status": {
+              "enum": [
+                "FOUND",
+                "NOT_FOUND",
+                "UNKNOWN",
+                "BLOCKED",
+                "RATE_LIMITED",
+                "NOT_CHECKED",
+                "ERROR"
+              ],
+              "title": "Presence Status",
+              "type": "string"
+            },
+            "evidence_ids": {
+              "items": {
+                "maxLength": 2048,
+                "type": "string"
+              },
+              "title": "Evidence Ids",
+              "type": "array"
+            },
+            "subject_attribution": {
+              "const": "UNPROVEN",
+              "default": "UNPROVEN",
+              "title": "Subject Attribution",
+              "type": "string"
+            }
+          },
+          "required": [
+            "service_id",
+            "handle",
+            "presence_status"
+          ],
+          "title": "Lead",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "schema_version": {
+          "default": "release-result/1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "report_id": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "snapshot": {
+          "maxLength": 32,
+          "pattern": "^[a-f0-9]{32}$",
+          "title": "Snapshot",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/Lead"
+          },
+          "maxItems": 50,
+          "title": "Items",
+          "type": "array"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        },
+        "offset": {
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 0,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 43,
+              "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "report_id",
+        "snapshot",
+        "items",
+        "total",
+        "offset",
+        "limit",
+        "next_cursor"
+      ],
+      "title": "LeadPageResponse",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "default": "release-result/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "report_id": {
+      "maxLength": 32,
+      "pattern": "^[a-f0-9]{32}$",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "snapshot": {
+      "maxLength": 32,
+      "pattern": "^[a-f0-9]{32}$",
+      "title": "Snapshot",
+      "type": "string"
+    },
+    "seed": {
+      "maxLength": 2048,
+      "title": "Seed",
+      "type": "string"
+    },
+    "job_state": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "INTERRUPTED",
+        "COMPLETED",
+        "COMPLETED_WITH_SOURCE_GAPS",
+        "FAILED",
+        "CANCELLED"
+      ],
+      "title": "Job State",
+      "type": "string"
+    },
+    "plan_complete": {
+      "title": "Plan Complete",
+      "type": "boolean"
+    },
+    "services": {
+      "items": {
+        "$ref": "#/$defs/ServiceHeader"
+      },
+      "maxItems": 100,
+      "title": "Services",
+      "type": "array"
+    },
+    "services_total": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Services Total",
+      "type": "integer"
+    },
+    "accounts_total": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Accounts Total",
+      "type": "integer"
+    },
+    "services_next_cursor": {
+      "anyOf": [
+        {
+          "maxLength": 43,
+          "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Services Next Cursor"
+    },
+    "leads": {
+      "items": {
+        "$ref": "#/$defs/Lead"
+      },
+      "maxItems": 50,
+      "title": "Leads",
+      "type": "array"
+    },
+    "leads_total": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Leads Total",
+      "type": "integer"
+    },
+    "leads_next_cursor": {
+      "anyOf": [
+        {
+          "maxLength": 43,
+          "pattern": "^[a-f0-9]{32}:\\d{1,10}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Leads Next Cursor"
+    },
+    "check_summary": {
+      "additionalProperties": {
+        "minimum": 0,
+        "type": "integer"
+      },
+      "propertyNames": {
+        "enum": [
+          "FOUND",
+          "NOT_FOUND",
+          "UNKNOWN",
+          "BLOCKED",
+          "RATE_LIMITED",
+          "NOT_CHECKED",
+          "ERROR"
+        ]
+      },
+      "title": "Check Summary",
+      "type": "object"
+    },
+    "coverage": {
+      "$ref": "#/$defs/Coverage"
+    }
+  },
+  "required": [
+    "report_id",
+    "snapshot",
+    "seed",
+    "job_state",
+    "plan_complete"
+  ],
+  "title": "ResultResponse",
+  "type": "object"
+}

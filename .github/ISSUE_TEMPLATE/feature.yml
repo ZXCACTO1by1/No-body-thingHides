@@ -1,0 +1,15 @@
+name: Feature request
+description: Suggest a useful improvement.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe the task that is difficult today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Include public source documentation where it helps.
