@@ -14,3 +14,8 @@ cookies, tokens, report archive or an unredacted log.
 The local server is intended for the same computer. Do not expose it through port
 forwarding or bind a custom client to a public interface. Keep Windows protections
 enabled. Verify release checksums before running an archive received elsewhere.
+
+The project does not promise that an external provider is reachable, that a
+result is complete or that an account belongs to a particular person. Report
+security boundary failures with a synthetic reproduction and the smallest
+possible attachment.

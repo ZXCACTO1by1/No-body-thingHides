@@ -23,3 +23,7 @@ and separate live acceptance; automated contracts do not certify live coverage.
 Service availability changes independently of application releases. Incomplete
 checks and source restrictions remain visible in result details. Bugs may occur
 in this first release; include the application version when reporting them.
+
+The repository is English-first with Russian user documentation. The public
+source covers the client and contracts; the Windows archive contains the
+compiled private core and its separate upstream notices.

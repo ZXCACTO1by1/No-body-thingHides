@@ -14,4 +14,6 @@ public source information. The maintainer decides the engine roadmap.
 
 Read [contribution terms](CONTRIBUTION_TERMS.md) before submitting original
 material. Retain upstream attribution. Never attach credentials, raw evidence,
-personal case folders or private datasets to an issue or pull request.
+personal case folders or private datasets to an issue or pull request. The
+repository title is `No[body]thingHides`; technical executable names may remain
+`NoBodyThingHides` where required by the Windows package.

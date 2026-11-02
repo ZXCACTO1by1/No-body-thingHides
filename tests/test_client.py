@@ -61,7 +61,7 @@ class ClientTests(unittest.TestCase):
             self.assertEqual((output / "keep.txt").read_text(), "keep")
 
     def test_document_links_resolve(self):
-        for path in [ROOT / "README.md", *ROOT.glob("docs/**/*.md")]:
+        for path in [ROOT / "README.md", ROOT / "README.ru.md", *ROOT.glob("docs/**/*.md")]:
             for link in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf8")):
                 if "://" not in link and not link.startswith("#"):
                     self.assertTrue((path.parent / link.split("#")[0]).is_file(), (path, link))
