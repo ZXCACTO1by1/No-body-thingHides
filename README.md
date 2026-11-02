@@ -30,6 +30,8 @@ does not establish that two accounts belong to the same person.
 
 Export a readable report, text report or complete JSON data from Results.
 [Result interpretation](docs/results.md) explains the states and evidence.
+[Provider configuration](docs/credentials.md) explains the optional official APIs,
+hidden-input credential commands and remaining Telegram transport limitations.
 
 ## Version 1.0.0
 

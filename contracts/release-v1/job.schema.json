@@ -2,6 +2,24 @@
   "$defs": {
     "JobProgress": {
       "properties": {
+        "checked": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Checked",
+          "type": "integer"
+        },
+        "elapsed_seconds": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Elapsed Seconds",
+          "type": "number"
+        },
+        "planned": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Planned",
+          "type": "integer"
+        },
         "stage": {
           "anyOf": [
             {
@@ -14,24 +32,6 @@
           ],
           "default": null,
           "title": "Stage"
-        },
-        "checked": {
-          "default": 0,
-          "minimum": 0,
-          "title": "Checked",
-          "type": "integer"
-        },
-        "planned": {
-          "default": 0,
-          "minimum": 0,
-          "title": "Planned",
-          "type": "integer"
-        },
-        "elapsed_seconds": {
-          "default": 0.0,
-          "minimum": 0,
-          "title": "Elapsed Seconds",
-          "type": "number"
         }
       },
       "title": "JobProgress",
@@ -79,11 +79,21 @@
     }
   },
   "properties": {
-    "schema_version": {
-      "const": "release-job/1",
-      "default": "release-job/1",
-      "title": "Schema Version",
+    "created_at": {
+      "maxLength": 2048,
+      "title": "Created At",
       "type": "string"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SafeError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "id": {
       "maxLength": 32,
@@ -96,36 +106,8 @@
       "title": "Operation",
       "type": "string"
     },
-    "state": {
-      "enum": [
-        "QUEUED",
-        "RUNNING",
-        "INTERRUPTED",
-        "COMPLETED",
-        "COMPLETED_WITH_SOURCE_GAPS",
-        "FAILED",
-        "CANCELLED"
-      ],
-      "title": "State",
-      "type": "string"
-    },
-    "created_at": {
-      "maxLength": 2048,
-      "title": "Created At",
-      "type": "string"
-    },
-    "updated_at": {
-      "anyOf": [
-        {
-          "maxLength": 2048,
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Updated At"
+    "progress": {
+      "$ref": "#/$defs/JobProgress"
     },
     "report_id": {
       "anyOf": [
@@ -141,24 +123,42 @@
       "default": null,
       "title": "Report Id"
     },
-    "progress": {
-      "$ref": "#/$defs/JobProgress"
-    },
     "resumable": {
       "default": false,
       "title": "Resumable",
       "type": "boolean"
     },
-    "error": {
+    "schema_version": {
+      "const": "release-job/1",
+      "default": "release-job/1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "INTERRUPTED",
+        "COMPLETED",
+        "COMPLETED_WITH_SOURCE_GAPS",
+        "FAILED",
+        "CANCELLED"
+      ],
+      "title": "State",
+      "type": "string"
+    },
+    "updated_at": {
       "anyOf": [
         {
-          "$ref": "#/$defs/SafeError"
+          "maxLength": 2048,
+          "type": "string"
         },
         {
           "type": "null"
         }
       ],
-      "default": null
+      "default": null,
+      "title": "Updated At"
     }
   },
   "required": [

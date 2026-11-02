@@ -20,11 +20,20 @@ labels and evidence references.
 | Not checked | Work remains pending or was not attempted. |
 | Error | The check did not complete successfully. |
 
-Leads are useful follow-up inputs, not confirmed account cards. Use All checks to
-see source gaps and pending work. No accounts in a view does not establish that
+Unconfirmed checks retain work without enough account evidence. Their reason
+distinguishes a provider refusal, missing configuration, rate limit, redirect,
+unsupported contract and an inconclusive profile. A next-attempt time is shown
+when a saved retry can become due. Filter these checks by reason; they remain
+separate from confirmed account cards. Use All checks to see source gaps and
+pending work. No accounts in a view does not establish that
 the person has no accounts anywhere. Evidence references, timestamps and original
 source text support review; a search is a snapshot of a changing service.
 
 Readable and text exports organize accounts by service. Full JSON preserves the
 machine report and evidence references. Review every export before sharing it:
 search terms, links and source responses can identify people.
+
+Continue retains the total physical request budget, including earlier segments.
+Short cooldowns can continue automatically; longer waits remain saved. API quota
+reservations are recorded separately and do not establish actual provider billing.
+See [provider configuration](credentials.md) for the supported API dependencies.

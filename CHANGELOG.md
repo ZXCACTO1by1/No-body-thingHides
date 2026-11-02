@@ -11,6 +11,14 @@ First public release, focused on usernames and nicknames.
 - English interface with a persistent Russian option.
 - Supported extraction, original Maigret settings and saved-data tools.
 - Local storage and a compiled Windows x64 core.
+- Durable retry/cooldown state and a total request budget retained on continuation.
+- Configured exact Twitch, YouTube and GitHub APIs in the ordinary search.
+- Reviewed API Anything extraction on compatible Instagram and TikTok routes.
+- Unconfirmed-check reasons, retry times, filters and credential presence status.
+
+The public Telegram preview parser is included. Native Telegram MTProto transport
+is not implemented or activated. New API routes require their provider settings
+and separate live acceptance; automated contracts do not certify live coverage.
 
 Service availability changes independently of application releases. Incomplete
 checks and source restrictions remain visible in result details. Bugs may occur

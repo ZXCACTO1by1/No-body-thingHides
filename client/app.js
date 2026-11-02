@@ -64,7 +64,7 @@ function formValues(container, retainBlank = false) {
 function field(parameter, container, value) {
   const box = node("div", undefined, "field");
   let control;
-  const choices = parameter.choices || [];
+  const choices = parameter.name === "provider" ? ["hunter", "securitytrails", "twitch_client_id", "twitch_client_secret", "youtube", "github"] : parameter.choices || [];
   const saved = selections[parameter.name];
   if (parameter.kind === "choice" || (choices.length && !parameter.multiple) || saved?.length) {
     control = node("select"); control.append(new Option(t("ui.select"), ""));
@@ -117,6 +117,7 @@ function renderSettings(searchValues = {}, savedValues = {}) {
   });
   const mode = main.parameters.find((parameter) => parameter.name === "mode");
   field(mode, $("#preference-fields"), savedValues.mode ?? preferences.mode ?? mode.default);
+  easy("credentials").then((result) => { const root = $("#provider-status"); root.replaceChildren(); result.providers.forEach((provider) => root.append(node("p", provider.provider + " · " + t(provider.configured ? "recovery.configured" : "recovery.missing")))); }).catch((error) => notice(error.message));
 }
 function renderTools() {
   const root = $("#tool-list"); root.replaceChildren();
@@ -238,6 +239,7 @@ function accountCard(account) {
   const details = node("details"); details.append(node("summary", t("result.evidence")));
   details.append(node("p", account.evidence_ids.join(" · ")), node("p", t("result.attribution")));
   if (account.observed_at) details.append(node("p", t("ui.observed") + ": " + account.observed_at));
+  Object.entries(account.public_fields || {}).forEach(([name, value]) => details.append(node("p", name + ": " + value)));
   card.append(details); return card;
 }
 async function openResult(row, focus = true, retained = {}) {
@@ -305,8 +307,14 @@ async function openResult(row, focus = true, retained = {}) {
     finally { moreServices.disabled = false; }
   }); root.append(moreServices);
   const leads = node("details"); leads.append(node("summary", t("ui.lead_count", { count: result.leads_total })));
+  leads.append(node("p", t("recovery.explanation")));
+  const leadFilter = node("select"); leadFilter.setAttribute("aria-label", t("recovery.filter"));
+  ["all", "profile_unconfirmed", "provider_backoff", "configuration_required", "provider_refused", "invalid_identifier", "work_pending", "retry_exhausted"].forEach((reason) => { const option = node("option", t("recovery.reason." + reason)); option.value = reason; leadFilter.append(option); });
+  leads.append(leadFilter);
   const leadList = node("div"); leads.append(leadList);
-  function appendLeads(items) { items.forEach((lead) => { const element = node("p", lead.handle + " · " + status(lead.presence_status)); if (lead.url) element.append(document.createTextNode(" · "), profileLink(lead.url, lead.url)); leadList.append(element); }); }
+  const filterLeads = () => { leadList.querySelectorAll("[data-reason]").forEach((element) => { element.hidden = leadFilter.value !== "all" && element.dataset.reason !== leadFilter.value; }); };
+  leadFilter.addEventListener("change", filterLeads);
+  function appendLeads(items) { items.forEach((lead) => { const reason = lead.reason || "profile_unconfirmed"; const element = node("p", lead.handle + " · " + status(lead.presence_status) + " · " + t(lead.reason_detail ? "recovery.detail." + lead.reason_detail : "recovery.reason." + reason)); element.dataset.reason = reason; if (lead.next_attempt_at) element.append(document.createTextNode(" · " + t("recovery.next_attempt") + ": " + lead.next_attempt_at)); if (lead.url) element.append(document.createTextNode(" · "), profileLink(lead.url, lead.url)); leadList.append(element); }); filterLeads(); }
   appendLeads(result.leads); let leadsCursor = result.leads_next_cursor;
   const moreLeads = node("button", t("ui.more_leads")); moreLeads.hidden = !leadsCursor;
   moreLeads.addEventListener("click", async () => {

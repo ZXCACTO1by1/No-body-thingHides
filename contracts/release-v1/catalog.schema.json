@@ -2,25 +2,15 @@
   "$defs": {
     "CatalogOperation": {
       "properties": {
-        "id": {
-          "maxLength": 2048,
-          "title": "Id",
-          "type": "string"
-        },
-        "title": {
-          "maxLength": 2048,
-          "title": "Title",
-          "type": "string"
-        },
-        "section": {
-          "maxLength": 2048,
-          "title": "Section",
-          "type": "string"
-        },
         "description": {
           "default": "",
           "maxLength": 2048,
           "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 2048,
+          "title": "Id",
           "type": "string"
         },
         "parameters": {
@@ -29,6 +19,16 @@
           },
           "title": "Parameters",
           "type": "array"
+        },
+        "section": {
+          "maxLength": 2048,
+          "title": "Section",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 2048,
+          "title": "Title",
+          "type": "string"
         }
       },
       "required": [
@@ -41,34 +41,13 @@
     },
     "CatalogParameter": {
       "properties": {
-        "name": {
-          "maxLength": 2048,
-          "title": "Name",
-          "type": "string"
-        },
-        "label": {
-          "maxLength": 2048,
-          "title": "Label",
-          "type": "string"
-        },
-        "help": {
-          "default": "",
-          "maxLength": 2048,
-          "title": "Help",
-          "type": "string"
-        },
-        "kind": {
-          "enum": [
-            "text",
-            "integer",
-            "number",
-            "boolean",
-            "choice",
-            "file",
-            "selection"
-          ],
-          "title": "Kind",
-          "type": "string"
+        "choices": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "title": "Choices",
+          "type": "array"
         },
         "default": {
           "anyOf": [
@@ -97,20 +76,29 @@
           "default": null,
           "title": "Default"
         },
-        "minimum": {
-          "anyOf": [
-            {
-              "type": "integer"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
+        "help": {
+          "default": "",
+          "maxLength": 2048,
+          "title": "Help",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "text",
+            "integer",
+            "number",
+            "boolean",
+            "choice",
+            "file",
+            "selection"
           ],
-          "default": null,
-          "title": "Minimum"
+          "title": "Kind",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 2048,
+          "title": "Label",
+          "type": "string"
         },
         "maximum": {
           "anyOf": [
@@ -127,23 +115,35 @@
           "default": null,
           "title": "Maximum"
         },
-        "required": {
-          "default": false,
-          "title": "Required",
-          "type": "boolean"
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum"
         },
         "multiple": {
           "default": false,
           "title": "Multiple",
           "type": "boolean"
         },
-        "choices": {
-          "items": {
-            "maxLength": 2048,
-            "type": "string"
-          },
-          "title": "Choices",
-          "type": "array"
+        "name": {
+          "maxLength": 2048,
+          "title": "Name",
+          "type": "string"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
         },
         "secret": {
           "default": false,
@@ -161,12 +161,6 @@
     }
   },
   "properties": {
-    "schema_version": {
-      "const": "release-catalog/1",
-      "default": "release-catalog/1",
-      "title": "Schema Version",
-      "type": "string"
-    },
     "language": {
       "default": "en",
       "enum": [
@@ -182,6 +176,12 @@
       },
       "title": "Operations",
       "type": "array"
+    },
+    "schema_version": {
+      "const": "release-catalog/1",
+      "default": "release-catalog/1",
+      "title": "Schema Version",
+      "type": "string"
     }
   },
   "required": [
