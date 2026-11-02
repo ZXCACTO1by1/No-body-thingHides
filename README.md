@@ -2,7 +2,7 @@
 
 Local-first Windows software for researching public accounts from one username or nickname, with evidence-aware results, resumable jobs and service-grouped reports.
 
-![Client checks](https://github.com/NoBodyThingHides/NoBodyThingHides/actions/workflows/client.yml/badge.svg)
+![Client checks](https://github.com/ZXCACTO1by1/No-body-thingHides/actions/workflows/client.yml/badge.svg)
 
 > **First public release: 1.0.0.** The project is useful and deliberately honest about uncertainty, but it is not a premium service, a universal directory or proof of account ownership.
 
