@@ -16,6 +16,7 @@
       <nav aria-label="Navigation">
         <button type="button" data-screen="search" aria-current="page" data-i18n="nav.search">Search</button>
         <button type="button" data-screen="results" data-i18n="nav.results">Results</button>
+        <button type="button" data-screen="activity" data-i18n="nav.activity">Activity</button>
         <button type="button" data-screen="tools" data-i18n="nav.tools">Tools</button>
         <button type="button" data-screen="settings" data-i18n="nav.settings">Settings</button>
       </nav>
@@ -24,9 +25,11 @@
     <main id="content" tabindex="-1">
       <header><span class="eyebrow" data-i18n="ui.workspace">YOUR WORKSPACE</span><label class="language"><span data-i18n="settings.language">Interface language</span><select id="language"><option value="en">English</option><option value="ru">Русский</option></select></label></header>
       <div id="notice" role="status" aria-live="polite" hidden></div>
+      <div id="busy-banner" class="busy-banner" hidden><span data-i18n="ui.busy_banner"></span><button type="button" data-screen="activity" data-i18n="ui.busy_action"></button></div>
+      <div id="connection-retry" class="actions" hidden><button id="retry-connection" type="button" data-i18n="ui.retry"></button></div>
       <section id="screen-search">
         <div class="intro"><p class="eyebrow" data-i18n="ui.search_eyebrow">START WITH A USERNAME</p><h1 data-i18n="ui.search_title">Follow a username.</h1><p data-i18n="ui.search_intro">Find public accounts, similar spellings and profile links in one search.</p></div>
-        <form id="main-search" class="panel">
+        <form id="main-search" class="panel" novalidate>
           <label for="nickname" data-i18n="search.username">Username</label>
           <div class="search-line"><input id="nickname" name="username" autocomplete="off" maxlength="256" required placeholder="example_handle"><button class="primary" data-i18n="action.search">Start search</button></div>
           <p class="hint" data-i18n="ui.username_hint">Enter an account name without @ or a profile URL.</p>
@@ -37,27 +40,29 @@
           <details><summary data-i18n="ui.search_settings">Search limits and speed</summary><p class="hint" data-i18n="ui.limits_hint">Both modes use the same applicable search stages. Empty time and request limits leave the run uncapped.</p><div id="search-options" class="fields"></div></details>
         </form>
         <div class="benefits"><article><h2 data-i18n="ui.service_title">Organized by service</h2><p data-i18n="ui.service_hint">See each account in its service section, with its supporting receipts.</p></article><article><h2 data-i18n="ui.resume_title">Pick up where you left off</h2><p data-i18n="ui.resume_hint">Stop and save a search, then continue it from your history.</p></article></div>
-        <section id="activity" class="panel" hidden><h2 data-i18n="ui.activity">Recent activity</h2><div id="job-list"></div></section>
       </section>
+      <section id="screen-activity" hidden><div class="intro"><h1 data-i18n="nav.activity"></h1><p data-i18n="ui.activity_intro"></p></div><p id="activity-empty" class="empty" data-i18n="ui.activity_empty"></p><section id="activity" class="panel" hidden><div id="job-list"></div><button id="more-jobs" type="button" data-i18n="ui.more_jobs" hidden></button></section><button id="refresh-activity" type="button" data-i18n="ui.refresh_activity"></button></section>
       <section id="screen-results" hidden>
         <div class="intro"><p class="eyebrow" data-i18n="ui.results_eyebrow">SAVED WORK</p><h1 data-i18n="nav.results">Results</h1><p data-i18n="ui.results_intro">Open a saved result or continue an interrupted search.</p></div>
         <div id="result-list" class="cards"></div><section id="result-view" class="panel" hidden tabindex="-1"></section>
       </section>
       <section id="screen-tools" hidden>
         <div class="intro"><p class="eyebrow" data-i18n="ui.tools_eyebrow">GO FURTHER</p><h1 data-i18n="nav.tools">Tools</h1><p data-i18n="ui.tools_intro">Extract page data, explore saved connections and use the supported engines with your own settings.</p></div>
-        <label for="tool-filter" data-i18n="ui.find_tool">Find a tool</label><input type="search" id="tool-filter"><div id="tool-list" class="cards"></div>
+        <p class="workflow-guide" data-i18n="ui.tools_workflows"></p>
+        <section id="workspace-panel" class="panel"><h2 data-i18n="ui.workspace_title"></h2><p id="workspace-state" role="status" aria-live="polite"></p><p class="hint" data-i18n="ui.workspace_hint"></p><div id="workspace-actions" class="actions"></div></section>
+        <div class="tool-filters"><label for="tool-filter" data-i18n="ui.find_tool">Find a tool</label><input type="search" id="tool-filter"><label for="tool-group" data-i18n="ui.tool_group"></label><select id="tool-group"><option value="all" data-i18n="ui.group_all"></option></select></div><p id="tool-count" role="status"></p><div id="tool-list" class="tool-groups"></div>
       </section>
       <section id="screen-settings" hidden>
         <div class="intro"><p class="eyebrow" data-i18n="ui.settings_eyebrow">MAKE IT YOURS</p><h1 data-i18n="nav.settings">Settings</h1></div>
-        <form id="preferences" class="panel"><h2 data-i18n="ui.next_search">Next search</h2><div id="preference-fields" class="fields"></div><button class="primary" data-i18n="ui.save_preferences">Save preferences</button></form>
+        <form id="preferences" class="panel" novalidate><h2 data-i18n="ui.next_search">Next search</h2><div id="preference-fields" class="fields"></div><button class="primary" data-i18n="ui.save_preferences">Save preferences</button></form>
         <article class="panel"><h2 data-i18n="recovery.settings">Provider API settings</h2><p class="hint" data-i18n="recovery.settings_hint"></p><div id="provider-status"></div></article>
         <article class="panel"><h2>No[body]thingHides 1.0</h2><p data-i18n="about.first_release"></p><p class="hint" data-i18n="ui.licenses">Free to use. See the bundled license and third-party notices for the terms.</p></article>
       </section>
       <footer data-i18n="result.attribution">Account presence does not establish who owns it.</footer>
     </main>
   </div>
-  <dialog id="operation-dialog"><div class="dialog-heading"><h2 id="operation-title"></h2><button type="button" id="close-dialog" aria-label="Close">×</button></div><p id="operation-help"></p><form id="operation-form"><div id="operation-fields" class="fields"></div><div id="special-fields"></div><p id="form-error" class="error" role="alert" hidden></p><button class="primary" data-i18n="ui.run_tool">Run tool</button></form></dialog>
-  <dialog id="output-dialog" aria-labelledby="output-title"><div class="dialog-heading"><h2 id="output-title" data-i18n="ui.output">Tool output</h2><button type="button" id="close-output" data-i18n="action.close">Close</button></div><p class="hint" data-i18n="ui.output_hint"></p><pre id="output-text"></pre><p id="output-truncated" class="hint" data-i18n="ui.output_truncated" hidden></p><button id="download-output" data-i18n="ui.download_output">Download text output</button></dialog>
+  <dialog id="operation-dialog" aria-labelledby="operation-title" aria-describedby="operation-help"><div class="dialog-heading"><h2 id="operation-title"></h2><button type="button" id="close-dialog" aria-label="Close">×</button></div><p id="operation-help"></p><div id="operation-prerequisite" class="prerequisite" hidden></div><form id="operation-form" novalidate><p id="no-tool-inputs" class="hint" data-i18n="ui.no_inputs" hidden></p><p class="hint" data-i18n="ui.required_fields"></p><div id="operation-fields" class="fields"></div><div id="special-fields"></div><p id="form-error" class="error" role="alert" hidden></p><button id="operation-submit" class="primary" data-i18n="ui.run_tool">Run tool</button></form></dialog>
+  <dialog id="output-dialog" aria-labelledby="output-title"><div class="dialog-heading"><h2 id="output-title" data-i18n="ui.output">Tool output</h2><button type="button" id="close-output" data-i18n="action.close">Close</button></div><p class="hint" data-i18n="ui.output_hint"></p><div id="output-identifiers"></div><pre id="output-text"></pre><p id="output-truncated" class="hint" data-i18n="ui.output_truncated" hidden></p><button id="download-output" data-i18n="ui.download_output">Download text output</button></dialog>
   <script nonce="__TOKEN__">const TOKEN="__TOKEN__"; __SCRIPT__</script>
 </body>
 </html>

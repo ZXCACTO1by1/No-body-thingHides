@@ -2,6 +2,27 @@
   "$defs": {
     "CatalogOperation": {
       "properties": {
+        "alias": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Alias"
+        },
+        "capability_statuses": {
+          "items": {
+            "maxLength": 2048,
+            "type": "string"
+          },
+          "title": "Capability Statuses",
+          "type": "array"
+        },
         "description": {
           "default": "",
           "maxLength": 2048,
@@ -12,6 +33,11 @@
           "maxLength": 2048,
           "title": "Id",
           "type": "string"
+        },
+        "needs_database": {
+          "default": false,
+          "title": "Needs Database",
+          "type": "boolean"
         },
         "parameters": {
           "items": {

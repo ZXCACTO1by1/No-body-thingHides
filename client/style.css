@@ -4,3 +4,14 @@
 @media(max-width:900px){.shell{grid-template-columns:185px minmax(0,1fr)}aside{padding:30px 18px}.brand{font-size:23px}main{padding:22px 24px}.language{align-items:flex-start;flex-direction:column;gap:2px}.panel{padding:22px}.cards,.accounts,.fields{grid-template-columns:1fr}}
 @media(max-width:620px){.shell{display:block}aside{position:static;height:auto;padding:20px;border-right:0;border-bottom:1px solid var(--line)}.brand{font-size:23px}.brand br{display:none}.edition{margin:10px 0}nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:12px}nav button{text-align:center;padding:10px 3px;font-size:12px}.local-note{display:none}main{padding:18px 16px}header{gap:8px}.eyebrow{font-size:10px;letter-spacing:1px}h1{letter-spacing:-1px}.intro{padding-top:26px}.panel{padding:20px 16px}.search-line{flex-direction:column}.modes,.benefits{grid-template-columns:1fr}.language span{font-size:11px}.accounts{grid-template-columns:1fr}.result-toolbar{align-items:stretch}.result-toolbar input{width:100%;flex-basis:100%}dialog{padding:20px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Shared interaction states and bounded responsive controls. */
+.busy-banner,.prerequisite{padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--light);margin:18px 0;overflow-wrap:anywhere}
+.busy-banner{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.busy-banner span{flex:1;min-width:180px}
+#notice{display:flex;align-items:center;justify-content:space-between;gap:12px}#notice span{min-width:0}#notice button{flex-shrink:0}
+.tool-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}.tool-filters label{grid-row:1}.tool-filters input,.tool-filters select{grid-row:2}
+.tool-group>h2{margin-top:32px}.tool-group .cards{margin-top:12px}.selection-details{margin-top:10px;font-size:12px}.selection-details code,.output-record code{display:block;overflow-wrap:anywhere;margin:8px 0;user-select:all}
+.provider-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 0}.output-record{padding:14px;border:1px solid var(--line);border-radius:8px;margin:10px 0}
+[aria-invalid=true]{border-color:#a33127!important;outline:2px solid #a33127}button:disabled{cursor:not-allowed}textarea:focus-visible{outline:3px solid var(--green)}
+aside{overflow-y:auto}button,summary,label,h1,h2,h3,p{overflow-wrap:anywhere}.dialog-heading h2{min-width:0}.dialog-heading button{flex-shrink:0}
+@media(max-width:620px){nav{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-filters{display:block}.tool-filters label{margin-top:12px}.provider-row{display:block}.busy-banner button{width:100%}#notice{align-items:flex-start}#notice button{padding:6px 10px}}

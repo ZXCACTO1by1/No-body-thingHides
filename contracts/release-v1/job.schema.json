@@ -142,7 +142,12 @@
         "COMPLETED",
         "COMPLETED_WITH_SOURCE_GAPS",
         "FAILED",
-        "CANCELLED"
+        "CANCELLED",
+        "TIME_LIMIT_REACHED",
+        "PARTIAL_REQUEST_BUDGET",
+        "PARTIAL_TASK_FAILURE",
+        "PARTIAL_NO_PROGRESS",
+        "PARTIAL_PROVIDER_BACKOFF"
       ],
       "title": "State",
       "type": "string"
